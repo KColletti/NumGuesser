@@ -19,7 +19,7 @@ public class NumGuesser {
         int [] guessed = new int [3]; // keep track of their 3 guesses 
         
         
-        //number- random generator-> Generates a random integer between min (inclusive) and max (inclusive)
+        //number-> random generator-> Generates a random integer between min (inclusive) and max (inclusive)
         
         Random random = new Random();
         int num = random.nextInt(100)+1; 
