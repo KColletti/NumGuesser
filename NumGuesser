@@ -1,0 +1,77 @@
+
+import java.util.Scanner;
+import java.util.Random; 
+
+/**
+ *
+ * @author Kayla Colletti
+ */
+public class NumGuesser {
+
+    public static void main(String[] args) 
+    {
+           
+        //user input 
+        Scanner input = new Scanner(System.in);
+
+        int numGuessed=0;//store user input
+        int attempts=3;//limit of attmpts user gets to guess 
+        int [] guessed = new int [3]; // keep track of their 3 guesses 
+        
+        
+        //number- random generator-> Generates a random integer between min (inclusive) and max (inclusive)
+        
+        Random random = new Random();
+        int num = random.nextInt(100)+1; 
+
+        //prints to exaplin what this is and rules 
+        System.out.println("The Number is Between 1 to 100");
+        System.out.println("You have "+attempts +" chances to get it!");
+        System.out.println("Do You Think You Can Guess The Number? \n ");
+        System.out.println("so i know random number is "+num);
+        
+        
+        //for loop for number entered is higher or lower to random number and user has 3 attempts to guess
+        for (int i=1; i<=attempts && num !=numGuessed ; i++)
+        {
+            System.out.print("Enter your guess:");
+            numGuessed = input.nextInt(); //users guess 
+            guessed [i-1]=numGuessed; // store what the user chose 
+            
+            if (numGuessed<num)//if the number entered by the user is less than the random number generated then prints the number is too low and the amount of attmptes they have left to get it corrcet 
+            {
+                System.out.println("TOO LOW!"); 
+                System.out.println(attempts-i +" chances left \n");
+          
+            } else if (numGuessed>num)//if the number entered by the user is greater than the random number generated then prints the number is too high and the amount of attmptes they have left to get it corrcet
+            {
+                System.out.println("TOO HIGH!"); 
+                System.out.println(attempts-i +" chances left \n");
+
+            }else //the number enterted by user is == to the random number generated 
+            {
+                System.out.println("YOU GUESSED IT! \n");
+            }
+             
+        }
+        
+        if (numGuessed != num) //after all attempts the user sill did not get it guess it, it prints that they are out of chances and shows them what the random number generated was 
+        {
+            System.out.println("You are OUT of chances! The number was "+ num );
+        }
+            
+        //show all their guesses, if they guessed correctly or wrong 
+        System.out.println("Your Guesses Were: ");
+        for(int i=0; i<guessed.length; i++)
+        {
+            if(guessed[i]!=0)
+            {
+                System.out.println(guessed[i]+""); //only prints the guesses made 
+            }
+        } 
+
+        input.close(); 
+        
+ 
+    }
+}
